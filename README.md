@@ -1,6 +1,10 @@
 # php-cs-fixer-config
 PHP CS Fixer config for prooph components
 
+[![Build Status](https://travis-ci.org/prooph/php-cs-fixer-config.svg?branch=master)](https://travis-ci.org/prooph/php-cs-fixer-config)
+[![Coverage Status](https://coveralls.io/repos/prooph/php-cs-fixer-config/badge.svg?branch=master&service=github)](https://coveralls.io/github/prooph/php-cs-fixer-config?branch=master)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/prooph/improoph)
+
 It's based on the ideas of [`refinery29/php-cs-fixer-config`](https://github.com/refinery29/php-cs-fixer-config/).
 
 ## Installation
@@ -8,7 +12,7 @@ It's based on the ideas of [`refinery29/php-cs-fixer-config`](https://github.com
 Run
 
 ```
-$ composer require --dev refinery29/php-cs-fixer-config
+$ composer require --dev prooph/php-cs-fixer-config
 ```
   
 ## Usage
