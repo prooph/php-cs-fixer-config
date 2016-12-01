@@ -13,8 +13,6 @@ declare(strict_types=1);
 namespace Prooph\CS\Config\Test;
 
 use PhpCsFixer\ConfigInterface;
-use PhpCsFixer\FixerFactory;
-use PhpCsFixer\RuleSet;
 use PHPUnit_Framework_TestCase as TestCase;
 use Prooph\CS\Config\Prooph;
 

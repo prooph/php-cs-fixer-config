@@ -27,7 +27,7 @@ class Prooph extends Config
     {
         return [
             '@PSR2' => true,
-            'array_syntax' => array('syntax' => 'short'),
+            'array_syntax' => ['syntax' => 'short'],
             'binary_operator_spaces' => [
                 'align_double_arrow' => false,
                 'align_equals' => false,
