@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Prooph\CS\Config\Test;
 
 use PhpCsFixer\ConfigInterface;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Prooph\CS\Config\Prooph;
 
 class ProophTest extends TestCase
