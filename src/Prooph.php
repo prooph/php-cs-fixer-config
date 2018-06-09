@@ -58,6 +58,7 @@ class Prooph extends Config
             'method_separation' => true,
             'modernize_types_casting' => true,
             'native_function_casing' => true,
+            'native_function_invocation' => true,
             'new_with_braces' => true,
             'no_alias_functions' => true,
             'no_blank_lines_after_class_opening' => true,
