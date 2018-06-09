@@ -1,8 +1,8 @@
 <?php
 /**
  * This file is part of the prooph/php-cs-fixer-config.
- * (c) 2016-2017 prooph software GmbH <contact@prooph.de>
- * (c) 2016-2017 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
+ * (c) 2016-2018 prooph software GmbH <contact@prooph.de>
+ * (c) 2016-2018 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -58,6 +58,7 @@ class Prooph extends Config
             'method_separation' => true,
             'modernize_types_casting' => true,
             'native_function_casing' => true,
+            'native_function_invocation' => true,
             'new_with_braces' => true,
             'no_alias_functions' => true,
             'no_blank_lines_after_class_opening' => true,
