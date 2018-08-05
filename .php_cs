@@ -10,6 +10,7 @@
 
 $config = new Prooph\CS\Config\Prooph();
 $config->getFinder()->in(__DIR__);
+$config->getFinder()->append(['.php_cs']);
 
 $cacheDir = getenv('TRAVIS') ? getenv('HOME') . '/.php-cs-fixer' : __DIR__;
 
