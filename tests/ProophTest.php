@@ -50,11 +50,10 @@ class ProophTest extends TestCase
     /**
      * @test
      */
-    public function it_does_not_have_header_comment_fixer_by_default(): void
+    public function it_does_have_header_comment_fixer_by_default(): void
     {
         $config = new Prooph();
         $rules = $config->getRules();
         $this->assertArrayHasKey('header_comment', $rules);
-        $this->assertFalse($rules['header_comment']);
     }
 }
