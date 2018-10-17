@@ -14,6 +14,18 @@ Run
 ```
 $ composer require --dev prooph/php-cs-fixer-config
 ```
+
+Add to composer.json;
+
+```json
+"scripts": {
+  "check": [
+    "@cs",
+  ],
+  "cs": "php-cs-fixer fix -v --diff --dry-run",
+  "cs-fix": "php-cs-fixer fix -v --diff",
+}
+```
   
 ## Usage
 
@@ -26,12 +38,28 @@ Create a configuration file `.php_cs` in the root of your project:
 
 $config = new Prooph\CS\Config\Prooph();
 $config->getFinder()->in(__DIR__);
+$config->getFinder()->append(['.php_cs']);
 
 $cacheDir = getenv('TRAVIS') ? getenv('HOME') . '/.php-cs-fixer' : __DIR__;
 
 $config->setCacheFile($cacheDir . '/.php_cs.cache');
 
 return $config;
+```
+
+#### Header
+
+When you create a `.docheader` in the root of your project it will be used as header comment.
+
+It is recommended to use the following template but you may use anything you want.
+
+```
+This file is part of `%package%`.
+(c) 2016-%year% prooph software GmbH <contact@prooph.de>
+(c) 2016-%year% Sascha-Oliver Prolic <saschaprolic@googlemail.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
 ```
 
 ### Git
@@ -67,7 +95,7 @@ script:
 If you need to fix issues locally, just run
 
 ```
-$ ./vendor/bin/php-cs-fixer fix -v
+$ composer cs-fix
 ```
 
 ### Pre-commit hook

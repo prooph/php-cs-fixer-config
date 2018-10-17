@@ -1,6 +1,7 @@
 <?php
+
 /**
- * This file is part of the prooph/php-cs-fixer-config.
+ * This file is part of `prooph/php-cs-fixer-config`.
  * (c) 2016-2018 prooph software GmbH <contact@prooph.de>
  * (c) 2016-2018 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
@@ -25,7 +26,7 @@ class Prooph extends Config
 
     public function getRules(): array
     {
-        return [
+        $rules = [
             '@PSR2' => true,
             'array_syntax' => ['syntax' => 'short'],
             'binary_operator_spaces' => [
@@ -47,7 +48,12 @@ class Prooph extends Config
             'function_declaration' => true,
             'function_typehint_space' => true,
             'hash_to_slash_comment' => true,
-            'header_comment' => false,
+            'header_comment' => [
+                'commentType' => 'PHPDoc',
+                'header' => 'Prooph was here at `%package%` in `%year%`! Please create a .docheader in the project root and run `composer cs-fix`',
+                'location' => 'after_open',
+                'separate' => 'both',
+            ],
             'include' => true,
             'indentation_type' => true,
             'linebreak_after_opening_tag' => true,
@@ -111,5 +117,32 @@ class Prooph extends Config
             'visibility_required' => true,
             'whitespace_after_comma_in_array' => true,
         ];
+
+        $rules['header_comment'] = $this->headerComment($rules['header_comment']);
+
+        return $rules;
+    }
+
+    private function headerComment(array $rules): array
+    {
+        if (\file_exists('.docheader')) {
+            $header = \file_get_contents('.docheader');
+        } else {
+            $header = $rules['header'];
+        }
+
+        // remove comments from existing .docheader or crash
+        $header = \str_replace(['/**', ' */', ' * ', ' *'], '', $header);
+        $package = 'unknown';
+
+        if (\file_exists('composer.json')) {
+            $package = \json_decode(\file_get_contents('composer.json'))->name;
+        }
+
+        $header = \str_replace(['%package%', '%year%'], [$package, (new \DateTime('now'))->format('Y')], $header);
+
+        $rules['header'] = \trim($header);
+
+        return $rules;
     }
 }
