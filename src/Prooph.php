@@ -2,8 +2,8 @@
 
 /**
  * This file is part of `prooph/php-cs-fixer-config`.
- * (c) 2016-2020 prooph software GmbH <contact@prooph.de>
- * (c) 2016-2020 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
+ * (c) 2016-2021 prooph software GmbH <contact@prooph.de>
+ * (c) 2016-2021 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -30,26 +30,31 @@ class Prooph extends Config
             '@PSR2' => true,
             'array_syntax' => ['syntax' => 'short'],
             'binary_operator_spaces' => [
-                'align_double_arrow' => false,
-                'align_equals' => false,
+                'operators' => [
+                    '=>' => 'single_space',
+                    '=' => 'single_space',
+                ],
             ],
             'blank_line_after_opening_tag' => true,
             'blank_line_after_namespace' => true,
-            'blank_line_before_return' => true,
+            'blank_line_before_statement' => true,
             'braces' => true,
             'cast_spaces' => true,
             'class_definition' => true,
             'combine_consecutive_unsets' => true,
             'concat_space' => false,
             'declare_strict_types' => true,
+            'echo_tag_syntax' => [
+                'format' => 'long',
+            ],
             'elseif' => true,
             'encoding' => true,
             'full_opening_tag' => true,
             'function_declaration' => true,
             'function_typehint_space' => true,
-            'hash_to_slash_comment' => true,
+            'single_line_comment_style' => true,
             'header_comment' => [
-                'commentType' => 'PHPDoc',
+                'comment_type' => 'PHPDoc',
                 'header' => 'Prooph was here at `%package%` in `%year%`! Please create a .docheader in the project root and run `composer cs-fix`',
                 'location' => 'after_open',
                 'separate' => 'both',
@@ -58,11 +63,16 @@ class Prooph extends Config
             'indentation_type' => true,
             'linebreak_after_opening_tag' => true,
             'line_ending' => true,
-            'lowercase_constants' => true,
+            'constant_case' => [
+                'case' => 'lower',
+            ],
             'lowercase_keywords' => true,
             'method_argument_space' => true,
-            'method_separation' => true,
+            'class_attributes_separation' => true,
             'modernize_types_casting' => true,
+            'multiline_whitespace_before_semicolons' => [
+                'strategy' => 'no_multi_line',
+            ],
             'native_function_casing' => true,
             'native_function_invocation' => true,
             'new_with_braces' => true,
@@ -70,13 +80,11 @@ class Prooph extends Config
             'no_blank_lines_after_class_opening' => true,
             'no_closing_tag' => true,
             'no_empty_statement' => true,
-            'no_extra_consecutive_blank_lines' => true,
+            'no_extra_blank_lines' => true,
             'no_leading_import_slash' => true,
             'no_leading_namespace_whitespace' => true,
             'no_multiline_whitespace_around_double_arrow' => true,
-            'no_multiline_whitespace_before_semicolons' => true,
             'no_short_bool_cast' => true,
-            'no_short_echo_tag' => true,
             'no_singleline_whitespace_before_semicolons' => true,
             'no_spaces_around_offset' => true,
             'no_trailing_comma_in_list_call' => true,
@@ -95,8 +103,9 @@ class Prooph extends Config
             'object_operator_without_whitespace' => true,
             'ordered_imports' => true,
             'phpdoc_indent' => true,
-            'phpdoc_inline_tag' => true,
-            'psr4' => true,
+            'phpdoc_inline_tag_normalizer' => true,
+            'phpdoc_tag_type' => true,
+            'psr_autoloading' => true,
             'return_type_declaration' => true,
             'semicolon_after_instruction' => true,
             'short_scalar_cast' => true,
@@ -111,7 +120,11 @@ class Prooph extends Config
             'switch_case_semicolon_to_colon' => true,
             'switch_case_space' => true,
             'ternary_operator_spaces' => true,
-            'trailing_comma_in_multiline_array' => true,
+            'trailing_comma_in_multiline' => [
+                'elements' => [
+                    'arrays',
+                ],
+            ],
             'trim_array_spaces' => true,
             'unary_operator_spaces' => true,
             'visibility_required' => true,
