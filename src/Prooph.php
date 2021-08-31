@@ -27,7 +27,7 @@ class Prooph extends Config
     public function getRules(): array
     {
         $rules = [
-            '@PSR2' => true,
+            '@PSR12' => true,
             'array_syntax' => ['syntax' => 'short'],
             'binary_operator_spaces' => [
                 'operators' => [
@@ -74,7 +74,10 @@ class Prooph extends Config
                 'strategy' => 'no_multi_line',
             ],
             'native_function_casing' => true,
-            'native_function_invocation' => true,
+            'native_function_invocation' => [
+                'include' => ['@internal'],
+                'scope' => 'all',
+            ],
             'new_with_braces' => true,
             'no_alias_functions' => true,
             'no_blank_lines_after_class_opening' => true,
