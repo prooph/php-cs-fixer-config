@@ -31,18 +31,18 @@ Add to composer.json;
 
 ### Configuration
 
-Create a configuration file `.php_cs` in the root of your project:
+Create a configuration file `.php-cs-fixer.php` in the root of your project:
 
 ```php
 <?php
 
 $config = new Prooph\CS\Config\Prooph();
 $config->getFinder()->in(__DIR__);
-$config->getFinder()->append(['.php_cs']);
+$config->getFinder()->append(['.php-cs-fixer.php']);
 
 $cacheDir = getenv('TRAVIS') ? getenv('HOME') . '/.php-cs-fixer' : __DIR__;
 
-$config->setCacheFile($cacheDir . '/.php_cs.cache');
+$config->setCacheFile($cacheDir . '/.php-cs-fixer.cache');
 
 return $config;
 ```
@@ -64,28 +64,28 @@ file that was distributed with this source code.
 
 ### Git
 
-Add `.php_cs.cache` (this is the cache file created by `php-cs-fixer`) to `.gitignore`:
+Add `.php-cs-fixer.cache` (this is the cache file created by `php-cs-fixer`) to `.gitignore`:
 
 ```
 vendor/
-.php_cs.cache
+.php-cs-fixer.cache
 ```
 
 ### Travis
 
-Update your `.travis.yml` to cache the `php_cs.cache` file:
+Update your `.travis.yml` to cache the `.php-cs-fixer.cache` file:
 
 ```yml
 cache:
   directories:
-    - $HOME/.php-cs-fixer
+    - $HOME/.php-cs-fixer.cache
 ```
 
 Then run `php-cs-fixer` in the `script` section:
 
 ```yml
 script:
-  - vendor/bin/php-cs-fixer fix --config=.php_cs --verbose --diff --dry-run
+  - vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --verbose --diff --dry-run
 ```
 
 ## Fixing issues
@@ -129,7 +129,7 @@ fi
 
 if $HAS_PHP_CS_FIXER; then
     git status --porcelain | grep -e '^[AM]\(.*\).php$' | cut -c 3- | while read line; do
-        ${PHP_CS_FIXER} fix --config-file=.php_cs --verbose ${line};
+        ${PHP_CS_FIXER} fix --config-file=.php-cs-fixer.php --verbose ${line};
         git add "$line";
     done
 else
