@@ -4,7 +4,7 @@
 /vendor
 /build
 .idea
-.php_cs.cache
+.php-cs-fixer.cache
 nbproject
 composer.lock
 docs/html
